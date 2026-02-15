@@ -30,7 +30,7 @@ RUN flutter config --enable-web
 
 # Projet Flutter
 WORKDIR /app
-COPY yenlei_flutter/ ./
+COPY ./ ./
 
 # Dépendances & build
 RUN flutter clean
