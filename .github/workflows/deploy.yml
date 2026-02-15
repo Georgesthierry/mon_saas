@@ -1,0 +1,42 @@
+name: Deploy mon_saas
+
+# Déclencheur
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Récupérer le code du repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2️⃣ Setup SSH pour se connecter au VPS
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.VPS_KEY }}
+
+      # 3️⃣ Déploiement sur le VPS
+      - name: Deploy to VPS
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} -p ${{ secrets.VPS_PORT }} "
+            # Aller dans le dossier du projet
+            cd /opt/mon_saas || exit 1
+
+            # Pull dernières modifications
+            git reset --hard
+            git clean -fd
+            git pull origin master
+
+            # Rebuild les conteneurs
+            docker-compose down
+            docker-compose up -d --build
+
+            # Vérifier l’état
+            docker ps
+          "
