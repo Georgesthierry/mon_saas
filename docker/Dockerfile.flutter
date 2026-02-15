@@ -1,0 +1,45 @@
+FROM debian:bookworm-slim AS build
+
+# Dépendances système
+RUN apt update && apt install -y \
+    curl \
+    git \
+    unzip \
+    xz-utils \
+    zip \
+    libglu1-mesa \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Installer Flutter
+WORKDIR /opt
+RUN git clone https://github.com/flutter/flutter.git
+
+# ✅ VERSION COMPATIBLE AVEC SDK ^3.9.0
+WORKDIR /opt/flutter
+RUN git fetch --all
+RUN git checkout 3.41.0
+
+# Variables Flutter
+ENV PATH="/opt/flutter/bin:/opt/flutter/bin/cache/dart-sdk/bin:${PATH}"
+ENV HOME=/tmp
+
+# Vérification
+RUN flutter --version
+RUN flutter config --enable-web
+
+# Projet Flutter
+WORKDIR /app
+COPY yenlei_flutter/ ./
+
+# Dépendances & build
+RUN flutter clean
+RUN flutter pub get
+RUN flutter build web --release
+
+# =========================
+# Image finale Nginx
+# =========================
+FROM nginx:alpine
+COPY --from=build /app/build/web /usr/share/nginx/html
+
