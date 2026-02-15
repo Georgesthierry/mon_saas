@@ -14,8 +14,9 @@ services:
       - backend
 
   django:
-    build: ./backend
-    dockerfile: Dockerfile.django
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile.django
     container_name: django_api
     restart: always
     command: gunicorn config.wsgi:application --bind 0.0.0.0:8000 --forwarded-allow-ips="*"
@@ -31,8 +32,9 @@ services:
       - frontend
 
   flutter:
-    build: ./frontend_flutter
-    dockerfile: Dockerfile.flutter
+    build: 
+      context: ./frontend_flutter
+      dockerfile: Dockerfile.flutter
     container_name: flutter_web
     restart: always
     networks:
