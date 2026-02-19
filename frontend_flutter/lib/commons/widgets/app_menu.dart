@@ -1,21 +1,17 @@
 import 'package:flutter/cupertino.dart';
+import 'package:yenlei_flutter/commons/constantes/app_menu_list.dart';
 import 'package:yenlei_flutter/commons/constantes/extensions.dart';
+import 'package:yenlei_flutter/commons/widgets/large_app_bar_menu_item.dart';
 import 'package:yenlei_flutter/l10n/app_localizations.dart';
 
-class AppMenu extends StatelessWidget {
-  const AppMenu({super.key});
+class LargeMenu extends StatelessWidget {
+  const LargeMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text(context.texts.acceuil),
-        Text(context.texts.propos),
-        Text(context.texts.projets),
-        Text(context.texts.services),
-        Text(context.texts.contact),
-      ],
+      children: AppMenuList.getItems(context).map((e) =>LargeAppBarMenuItem(text: e.title, isSelected: true, onTap: () {  },)).toList()
     );
   }
 }

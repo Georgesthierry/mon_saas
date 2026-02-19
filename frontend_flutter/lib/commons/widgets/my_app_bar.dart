@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yenlei_flutter/commons/constantes/extensions.dart';
 import 'package:yenlei_flutter/commons/style/app_size.dart';
+import 'package:yenlei_flutter/commons/widgets/app_bar_drawer_icon.dart';
 import 'package:yenlei_flutter/commons/widgets/app_logo.dart';
 import 'package:yenlei_flutter/commons/widgets/app_menu.dart';
 import 'package:yenlei_flutter/commons/widgets/language_toggle.dart';
@@ -15,7 +16,7 @@ class MyAppBar extends StatelessWidget {
       duration: Duration(microseconds: 200),
       padding: EdgeInsets.symmetric(horizontal: context.insets.padding),
       height: context.insets.appBarHeight,
-      color: Colors.red,
+      color: context.theme.appBarTheme.backgroundColor,
       child: ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: Insets.maxWidth
@@ -24,11 +25,11 @@ class MyAppBar extends StatelessWidget {
           children: [
             AppLogo(),
             Spacer(),
-            if (context.isDesktop)AppMenu(),
+            if (context.isDesktop)LargeMenu(),
             Spacer(),
             LanguageToggle(),
             ThemeToggle(),
-            if (!context.isDesktop) Icon(Icons.menu)
+            if (!context.isDesktop) AppBarDrawerIcon()
           ],
         ),
       ),

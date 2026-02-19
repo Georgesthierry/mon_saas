@@ -9,17 +9,17 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
-  String get acceuil => 'Acceuil';
+  String get acceuil => 'Accueil';
 
   @override
-  String get propos => 'About me';
+  String get propos => 'A propos';
 
   @override
-  String get projets => 'Projects';
+  String get projets => 'Projets';
 
   @override
   String get services => 'Services';
 
   @override
-  String get contact => 'Contact Me';
+  String get contact => 'Contactez-moi';
 }

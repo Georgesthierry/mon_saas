@@ -1,3 +1,7 @@
 {
-    "acceuil": "Acceuil"
+    "acceuil": "Accueil",
+    "propos": "A propos",
+    "projets": "Projets",
+    "services": "Services",
+    "contact": "Contactez-moi"
 }

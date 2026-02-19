@@ -15,6 +15,8 @@ extension StyledContext on BuildContext{
   double get width => mq.size.width;
   double get height => mq.size.height;
 
+  ThemeData get theme => Theme.of(this);
+
   FormFactoryType get formFactor {
     if (width <600){
       return FormFactoryType.mobile;
@@ -49,4 +51,5 @@ extension StyledContext on BuildContext{
     }
   }
   AppLocalizations get texts => AppLocalizations.of(this)??lookupAppLocalizations(const Locale('en'));
+  ColorScheme get colorScheme => theme.colorScheme;
 }
