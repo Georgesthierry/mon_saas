@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yenlei_flutter/commons/style/app_size.dart';
 import 'package:yenlei_flutter/commons/style/app_text_styles.dart';
@@ -29,6 +28,7 @@ extension StyledContext on BuildContext{
   bool get isMobile  => formFactor == FormFactoryType.mobile;
   bool get isTablet  => formFactor == FormFactoryType.tablet;
   bool get isDesktop  => formFactor == FormFactoryType.desktop;
+  bool get isDesktopOrTablet  => isTablet || isDesktop;
 
   AppTextStyles get textStyle {
     switch (formFactor){
@@ -53,3 +53,4 @@ extension StyledContext on BuildContext{
   AppLocalizations get texts => AppLocalizations.of(this)??lookupAppLocalizations(const Locale('en'));
   ColorScheme get colorScheme => theme.colorScheme;
 }
+

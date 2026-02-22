@@ -98,17 +98,17 @@ abstract class AppLocalizations {
     Locale('fr')
   ];
 
-  /// No description provided for @acceuil.
+  /// No description provided for @accueil.
   ///
   /// In en, this message translates to:
   /// **'Home'**
-  String get acceuil;
+  String get accueil;
 
-  /// No description provided for @propos.
+  /// No description provided for @apropos.
   ///
   /// In en, this message translates to:
-  /// **'About me'**
-  String get propos;
+  /// **'About'**
+  String get apropos;
 
   /// No description provided for @projets.
   ///
@@ -125,8 +125,80 @@ abstract class AppLocalizations {
   /// No description provided for @contact.
   ///
   /// In en, this message translates to:
-  /// **'Contact Me'**
+  /// **'Let\'s Work Together'**
   String get contact;
+
+  /// No description provided for @myname.
+  ///
+  /// In en, this message translates to:
+  /// **'Thierry KOUASSI'**
+  String get myname;
+
+  /// No description provided for @poweredByFlutter.
+  ///
+  /// In en, this message translates to:
+  /// **'Powered by Flutter'**
+  String get poweredByFlutter;
+
+  /// No description provided for @experiences.
+  ///
+  /// In en, this message translates to:
+  /// **'Experience & Achievements'**
+  String get experiences;
+
+  /// No description provided for @aboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital Solutions Architect'**
+  String get aboutTitle;
+
+  /// No description provided for @aboutDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Software Engineer and IT Manager specialized in designing robust, secure and high-performance digital solutions that transform information systems into strategic business assets.'**
+  String get aboutDescription;
+
+  /// No description provided for @testimonies.
+  ///
+  /// In en, this message translates to:
+  /// **'Trusted By'**
+  String get testimonies;
+
+  /// No description provided for @testimoniesDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Organizations and partners who accelerated their digital transformation through my solutions.'**
+  String get testimoniesDescription;
+
+  /// No description provided for @experienceDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'With over 6 years of experience, I support SMEs and large enterprises in designing, modernizing and securing IT infrastructures and business applications.'**
+  String get experienceDescription;
+
+  /// No description provided for @projectDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Each project is engineered to enhance performance, automate processes and create sustainable competitive advantage.'**
+  String get projectDescription;
+
+  /// No description provided for @profession.
+  ///
+  /// In en, this message translates to:
+  /// **'Software Engineer • IT Architect'**
+  String get profession;
+
+  /// No description provided for @cooperationRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Start a Strategic Partnership'**
+  String get cooperationRequest;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert in software development and information systems architecture, I combine strategic vision with deep technical expertise to deliver scalable, reliable and high-value solutions. Passionate about innovation, I turn complex technological challenges into growth opportunities.'**
+  String get profile;
 }
 
 class _AppLocalizationsDelegate

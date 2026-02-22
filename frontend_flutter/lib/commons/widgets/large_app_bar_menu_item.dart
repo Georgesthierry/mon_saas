@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yenlei_flutter/commons/constantes/extensions.dart';
 import 'package:yenlei_flutter/commons/style/app_size.dart';
 import 'package:yenlei_flutter/commons/style/app_text_styles.dart';
 
@@ -16,7 +17,9 @@ class LargeAppBarMenuItem extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: Insets.med,vertical: Insets.xs),
-        child: Text(text,style: SmallTextStyles().bodyLgMedium,),
+        child: Text(text,style: SmallTextStyles().bodyLgMedium.copyWith(
+          color: isSelected?context.colorScheme.onBackground
+        :context.colorScheme.onSurfaceVariant),),
       ),
     );
   }

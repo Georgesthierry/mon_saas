@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:yenlei_flutter/commons/constantes/app_routes.dart';
 import 'package:yenlei_flutter/commons/controllers/app_local_controller.dart';
 import 'package:yenlei_flutter/commons/controllers/app_theme_controller.dart';
 import 'package:yenlei_flutter/commons/style/app_theme.dart';
@@ -17,29 +18,37 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context,ref) {
-    final locale = ref.watch(appLocalControllerProvider);
-    final theme = ref.watch(appThemeControllerProvider);
-    return MaterialApp(
-      localizationsDelegates: [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate
-      ],
-      supportedLocales: [
+    final localeAsync = ref.watch(appLocalControllerProvider);
+    final themeAsync = ref.watch(appThemeControllerProvider);
+
+    final localeCode = localeAsync.value ?? 'fr';
+
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: 'yenlei',
+
+      locale: Locale(localeCode),
+      supportedLocales: const [
         Locale('en'),
         Locale('fr'),
       ],
-      locale: Locale(locale.value ?? 'fr'),
-      darkTheme: AppTheme(fontFamily: _fontFamily(locale.value)).dark,
-      theme: AppTheme(fontFamily: _fontFamily(locale.value)).light,
-      themeMode: theme.value,
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: HomeScreen(),
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+
+      /// 🎨 Theme
+      theme: AppTheme(fontFamily: _fontFamily(localeCode)).light,
+      darkTheme: AppTheme(fontFamily: _fontFamily(localeCode)).dark,
+      themeMode: themeAsync.value ?? ThemeMode.light,
+
+      routerConfig:AppRoute.router,
     );
   }
-  String _fontFamily(String? locale){
-    return (locale ?? 'fr')=='fr'? 'Roboto':'Roboto';
+
+  static String _fontFamily(String locale) {
+    return locale == 'fr' ? 'Roboto' : 'Roboto';
   }
 }

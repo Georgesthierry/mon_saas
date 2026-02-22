@@ -1,7 +1,19 @@
 {
-    "acceuil": "Home",
-    "propos": "About me",
+    "accueil": "Home",
+    "apropos": "About",
     "projets": "Projects",
     "services": "Services",
-    "contact": "Contact Me"
+    "contact": "Let's Work Together",
+    "myname": "Thierry KOUASSI",
+    "poweredByFlutter": "Powered by Flutter",
+    "experiences": "Experience & Achievements",
+    "aboutTitle": "Digital Solutions Architect",
+    "aboutDescription": "Software Engineer and IT Manager specialized in designing robust, secure and high-performance digital solutions that transform information systems into strategic business assets.",
+    "testimonies": "Trusted By",
+    "testimoniesDescription": "Organizations and partners who accelerated their digital transformation through my solutions.",
+    "experienceDescription": "With over 6 years of experience, I support SMEs and large enterprises in designing, modernizing and securing IT infrastructures and business applications.",
+    "projectDescription": "Each project is engineered to enhance performance, automate processes and create sustainable competitive advantage.",
+    "profession": "Software Engineer • IT Architect",
+    "cooperationRequest": "Start a Strategic Partnership",
+    "profile": "Expert in software development and information systems architecture, I combine strategic vision with deep technical expertise to deliver scalable, reliable and high-value solutions. Passionate about innovation, I turn complex technological challenges into growth opportunities."
 }

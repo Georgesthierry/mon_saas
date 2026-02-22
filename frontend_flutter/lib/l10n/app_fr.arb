@@ -1,7 +1,19 @@
 {
-    "acceuil": "Accueil",
-    "propos": "A propos",
+    "accueil": "Accueil",
+    "apropos": "À propos",
     "projets": "Projets",
     "services": "Services",
-    "contact": "Contactez-moi"
+    "contact": "Travaillons ensemble",
+    "myname": "Thierry KOUASSI",
+    "poweredByFlutter": "Conçu avec passion • Propulsé par Flutter",
+    "experiences": "Expériences & Réalisations",
+    "aboutTitle": "Architecte de solutions digitales",
+    "aboutDescription": "Ingénieur logiciel et Responsable IT, je conçois des solutions technologiques robustes, sécurisées et orientées performance pour transformer les systèmes d'information en véritables leviers stratégiques.",
+    "testimonies": "Ils me font confiance",
+    "testimoniesDescription": "Des partenaires et entreprises qui ont accéléré leur transformation digitale grâce à mes solutions.",
+    "experienceDescription": "Depuis plus de 6 ans, j’accompagne PME et grandes entreprises dans la conception, la modernisation et la sécurisation de leurs infrastructures et applications métiers.",
+    "projectDescription": "Chaque projet est pensé pour optimiser la performance, automatiser les processus et créer un avantage concurrentiel durable.",
+    "profession": "Ingénieur Logiciel • Architecte SI",
+    "cooperationRequest": "Démarrer une collaboration stratégique",
+    "profile": "Expert en développement logiciel et en architecture des systèmes d’information, j’allie vision stratégique et expertise technique pour concevoir des solutions fiables, évolutives et à forte valeur ajoutée. Passionné par l’innovation, je transforme les défis technologiques en opportunités de croissance."
 }
