@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:yenlei_flutter/commons/constantes/background_blur.dart';
 import 'package:yenlei_flutter/commons/constantes/extensions.dart';
-import 'package:yenlei_flutter/commons/style/app_size.dart';
 import 'package:yenlei_flutter/commons/widgets/app_scaffold.dart';
-import 'package:yenlei_flutter/commons/widgets/drawer_menu.dart';
 import 'package:yenlei_flutter/commons/widgets/home_title_subtitle.dart';
-import 'package:yenlei_flutter/commons/widgets/my_app_bar.dart';
 import 'package:yenlei_flutter/src/experience/experience_body.dart';
-import 'package:yenlei_flutter/src/footer/my_footer.dart';
 import 'package:yenlei_flutter/src/home/hero_widget.dart';
 import 'package:yenlei_flutter/src/project/home_project_list.dart';
 import 'package:yenlei_flutter/src/project/testimony_list.dart';
