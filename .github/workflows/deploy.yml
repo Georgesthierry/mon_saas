@@ -1,6 +1,5 @@
 name: Deploy mon_saas
 
-# Déclencheur
 on:
   push:
     branches:
@@ -11,32 +10,51 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Récupérer le code du repo
-      - name: Checkout code
+
+      # 1️⃣ Checkout du code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Setup SSH pour se connecter au VPS
-      - name: Setup SSH
+      # 2️⃣ Setup SSH
+      - name: Setup SSH agent
         uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{ secrets.VPS_KEY }}
 
-      # 3️⃣ Déploiement sur le VPS
+      # 3️⃣ Deploy sur VPS
       - name: Deploy to VPS
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} -p ${{ secrets.VPS_PORT }} "
-            # Aller dans le dossier du projet
+          ssh -o StrictHostKeyChecking=no \
+          -p ${{ secrets.VPS_PORT }} \
+          ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+
+            echo "🚀 Déploiement en cours..."
+
             cd /opt/mon_saas || exit 1
 
-            # Pull dernières modifications
+            echo "📥 Reset & Pull"
             git reset --hard
             git clean -fd
             git pull origin master
 
-            # Rebuild les conteneurs
-            docker-compose down
+            echo "🐳 Build & Start containers"
             docker-compose up -d --build
 
-            # Vérifier l’état
+            echo "⏳ Attente démarrage Django..."
+            sleep 15
+
+            echo "📦 Migration base de données"
+            docker-compose exec -T django python manage.py migrate
+
+            echo "🗂 Collect static"
+            docker-compose exec -T django python manage.py collectstatic --noinput
+
+            echo "🧹 Nettoyage images inutilisées"
+            docker image prune -f
+
+            echo "🔍 Containers actifs :"
             docker ps
-          "
+
+            echo "✅ Déploiement terminé avec succès"
+
+          EOF
