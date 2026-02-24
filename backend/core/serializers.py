@@ -3,9 +3,17 @@ from .models import Profile, Project, Experience, Testimony
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    photo = serializers.SerializerMethodField()
+
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = "__all__"
+
+    def get_photo(self, obj):
+        request = self.context.get("request")
+        if obj.photo:
+            return request.build_absolute_uri(obj.photo.url)
+        return None
 
 
 class ProjectSerializer(serializers.ModelSerializer):
