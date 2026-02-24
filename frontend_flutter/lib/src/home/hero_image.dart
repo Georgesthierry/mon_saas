@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:yenlei_flutter/src/models/profile_model.dart';
+
 
 class HeroImage extends StatelessWidget {
-  const HeroImage({super.key});
+  final Profile profile;
+  const HeroImage({super.key, required this.profile});
 
   @override
   Widget build(BuildContext context) {
@@ -9,8 +12,8 @@ class HeroImage extends StatelessWidget {
       aspectRatio: 0.6,
       child: ClipRRect(
         borderRadius: const BorderRadius.all(Radius.circular(250)),
-        child: Image.asset('assets/images/photo_georges.jpeg',fit: BoxFit.cover),
-      ),
+        child: Image.network(profile.photo, fit: BoxFit.cover),
+      )
     );
   }
 }
