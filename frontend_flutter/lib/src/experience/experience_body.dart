@@ -181,7 +181,6 @@ class ExperienceItem extends StatelessWidget {
                 .copyWith(color: context.colorScheme.primary),
           ),
           const SizedBox(height: 8),
-          // Ici on rend la liste des descriptions scrollable si nécessaire
           Expanded(
             child: ListView(
               padding: EdgeInsets.zero,
@@ -213,14 +212,14 @@ class _ExperienceDescriptionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2), // un petit espacement
+      padding: const EdgeInsets.symmetric(vertical: 2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: 4,
             height: 4,
-            margin: const EdgeInsets.only(top: 6), // aligne le point avec le texte
+            margin: const EdgeInsets.only(top: 6),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: context.colorScheme.surface,

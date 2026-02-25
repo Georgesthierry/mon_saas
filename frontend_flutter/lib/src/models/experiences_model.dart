@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+
 class Experience {
   final String company;
   final String role;
@@ -14,12 +17,28 @@ class Experience {
   });
 
   factory Experience.fromJson(Map<String, dynamic> json) {
+    List<String> parsedDescriptions = [];
+
+    if (json['description'] != null) {
+      final raw = json['description'];
+
+      if (raw is String) {
+        try {
+          final decoded = jsonDecode(raw);
+          if (decoded is List) {
+            parsedDescriptions =
+                decoded.map((e) => e.toString()).toList();
+          }
+        } catch (e) {
+          parsedDescriptions = [raw];
+        }
+      }
+    }
+
     return Experience(
       company: json['company'] ?? '',
       role: json['role'] ?? '',
-      descriptions: json['description'] != null
-          ? List<String>.from(json['description'])
-          : [],
+      descriptions: parsedDescriptions,
       startDate: json['start_date'] != null
           ? DateTime.parse(json['start_date'])
           : null,
