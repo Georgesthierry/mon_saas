@@ -1,15 +1,14 @@
-import 'package:yenlei_flutter/commons/constantes/api_constants.dart';
+import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class ApiClient {
-  static Future<http.Response> get(String endpoint) async {
-    final url = Uri.parse("${ApiConstants.baseUrl}$endpoint");
+class ApiService {
+  static Future<List<dynamic>> getData(String url) async {
+    final response = await http.get(Uri.parse(url));
 
-    return await http.get(
-      url,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    );
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      throw Exception("Erreur API ${response.statusCode}");
+    }
   }
 }

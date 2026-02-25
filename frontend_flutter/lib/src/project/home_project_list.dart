@@ -7,9 +7,6 @@ import 'package:yenlei_flutter/src/project/project_item.dart';
 import 'package:yenlei_flutter/src/models/project_model.dart';
 
 
-
-
-
 class HomeProjectList extends ConsumerWidget {
   const HomeProjectList({super.key});
 
@@ -53,13 +50,12 @@ class _HomeProjectDesktop extends StatelessWidget {
       child: Row(
         children: List.generate(displayedProjects.length, (index) {
           return Expanded(
-            child: ProjectItem(project: displayedProjects[index]),
+            child: Padding(
+              padding:  EdgeInsets.only(right: index != displayedProjects.length - 1 ? 20 : 0),
+              child: ProjectItem(project: displayedProjects[index]),
+            ),
           );
-        }).expand((widget) => [
-          widget,
-          const SizedBox(width: 20),
-        ]).toList()
-          ..removeLast(), // Supprime le dernier SizedBox
+        })// Supprime le dernier SizedBox
       ),
     );
   }

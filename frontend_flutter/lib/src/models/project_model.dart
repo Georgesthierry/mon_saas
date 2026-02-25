@@ -1,14 +1,15 @@
 import 'dart:convert';
 
-List<Project> projectListFromJson(String str) =>
-    List<Project>.from(json.decode(str).map((x) => Project.fromJson(x)));
+Project projectFromJson(String str) => Project.fromJson(json.decode(str));
+
+String projectToJson(Project data) => json.encode(data.toJson());
 
 class Project {
   int id;
   String title;
   String description;
   String image;
-  String? url;
+  String url;
   DateTime createdAt;
 
   Project({
@@ -16,7 +17,7 @@ class Project {
     required this.title,
     required this.description,
     required this.image,
-    this.url,
+    required this.url,
     required this.createdAt,
   });
 
@@ -38,5 +39,3 @@ class Project {
     "created_at": createdAt.toIso8601String(),
   };
 }
-
-

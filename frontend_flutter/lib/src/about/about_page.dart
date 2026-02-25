@@ -2,15 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:yenlei_flutter/commons/constantes/api_constants.dart';
 import 'package:yenlei_flutter/commons/constantes/extensions.dart';
-import 'package:yenlei_flutter/commons/data/services/profile_service.dart';
+import 'package:yenlei_flutter/commons/providers/profile_provider.dart';
 import 'package:yenlei_flutter/commons/widgets/app_scaffold.dart';
 import 'package:yenlei_flutter/commons/widgets/seotext.dart';
-import 'package:yenlei_flutter/src/models/profile_model.dart';
-
-// Provider pour récupérer le profil
-final profileProvider = FutureProvider<Profile>((ref) async {
-  return await ProfileService().getProfile();
-});
 
 class AboutPage extends ConsumerWidget {
   const AboutPage({super.key});

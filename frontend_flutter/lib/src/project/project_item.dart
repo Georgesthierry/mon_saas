@@ -5,13 +5,25 @@ import 'package:yenlei_flutter/commons/constantes/extensions.dart';
 import 'package:yenlei_flutter/commons/widgets/seotext.dart';
 import 'package:yenlei_flutter/commons/widgets/styled_card.dart';
 import 'package:yenlei_flutter/src/models/project_model.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class ProjectItem extends StatelessWidget {
   final Project project;
   const ProjectItem({super.key, required this.project});
 
+  Future<void> _openUrl() async {
+    final uri = Uri.parse(project.url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception("Impossible d'ouvrir le lien");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final imageUrl = project.image.startsWith('http')
+        ? project.image
+        : "${ApiConstants.baseUrl}${project.image}";
     return StyledCard(
       child: AspectRatio(
           aspectRatio: 0.7,
@@ -19,7 +31,7 @@ class ProjectItem extends StatelessWidget {
         children: [
           AspectRatio(aspectRatio: 1.5,
           child: ClipRRect(
-            child: Image.network("${ApiConstants.baseUrl}${project.image}",fit: BoxFit.cover),
+            child: Image.network(imageUrl,fit: BoxFit.cover),
             
           ),),
           SizedBox(width: 24,),

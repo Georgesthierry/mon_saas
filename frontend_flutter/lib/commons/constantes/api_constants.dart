@@ -1,5 +1,8 @@
 class ApiConstants {
-  static const String baseUrl = "https://api.yenlei.com";
-  static const String projectEndpoint = "/api/project/";
-  static const String profileEndpoint = "/api/profile/";
+  static const String baseUrl = "https://api.yenlei.com/api";
+
+  static const String profile = "/profile/";
+  static const String projects = "/projects/";
+  static const String experiences = "/experiences/";
+  static const String testimonies = "/testimonies/";
 }

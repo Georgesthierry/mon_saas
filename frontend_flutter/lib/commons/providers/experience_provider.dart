@@ -1,0 +1,11 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:yenlei_flutter/commons/constantes/api_constants.dart';
+import 'package:yenlei_flutter/commons/data/services/api_client.dart';
+import 'package:yenlei_flutter/src/models/experiences_model.dart';
+
+final experiencesProvider = FutureProvider<List<Experience>>((ref) async {
+  final data = await ApiService.getData(
+      "${ApiConstants.baseUrl}${ApiConstants.experiences}");
+
+  return data.map((json) => Experience.fromJson(json)).toList();
+});

@@ -8,6 +8,7 @@ class HeroImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return AspectRatio(
       aspectRatio: 0.6,
       child: ClipRRect(

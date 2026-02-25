@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:yenlei_flutter/commons/constantes/extensions.dart';
+import 'package:yenlei_flutter/commons/providers/profile_provider.dart';
 import 'package:yenlei_flutter/commons/style/app_size.dart';
 import 'package:yenlei_flutter/src/home/hero_buttons.dart';
 import 'package:yenlei_flutter/src/home/hero_image.dart';
