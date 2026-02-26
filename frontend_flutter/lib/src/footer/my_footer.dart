@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:yenlei_flutter/commons/constantes/app_icon.dart';
 import 'package:yenlei_flutter/commons/constantes/extensions.dart';
 import 'package:yenlei_flutter/commons/widgets/app_logo.dart';
@@ -69,9 +70,14 @@ class _FooterLinks extends StatelessWidget {
     return Row(mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _FooterLinkItem(
-            onPressed: (){}, icon: AppIcon.github),
+            onPressed: (){
+              _launchURL("https://www.linkedin.com/in/georges-thierry-kouassi-5309a1225");
+            }, icon: AppIcon.linkedin),
         _FooterLinkItem(
-            onPressed: (){}, icon: AppIcon.github)
+            onPressed: (){
+              _launchURL('https://github.com/Georgesthierry');
+            }, icon: AppIcon.github),
+
       ],
     );
   }
@@ -85,9 +91,23 @@ class _FooterLinkItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-        onPressed: onPressed, icon: SvgPicture.asset(icon,colorFilter: ColorFilter.mode(context.colorScheme.onBackground, BlendMode.srcIn),));
+    return Container(
+      height: 50,
+      width: 50,
+      child: IconButton(
+          onPressed: onPressed, icon: SvgPicture.asset(icon,colorFilter: ColorFilter.mode(context.colorScheme.onBackground, BlendMode.srcIn,),)),
+    );
   }
 }
 
+Future<void> _launchURL(String url) async {
+  final Uri uri = Uri.parse(url);
+
+  if (!await launchUrl(
+    uri,
+    mode: LaunchMode.externalApplication, // ouvre dans navigateur externe
+  )) {
+    throw 'Impossible d’ouvrir $url';
+  }
+}
 

@@ -136,7 +136,7 @@ class PhoneExperienceBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        height: 400, // ou MediaQuery.of(context).size.height / 2 selon ton design
+        height: 400, //
         child: ListView.separated(
           padding: EdgeInsets.symmetric(vertical: 16),
           itemCount: experiences.length,
@@ -168,38 +168,40 @@ class ExperienceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StyledCard(
-      width: expWidth,
-      height: expHeight,
-      borderEffect: true,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            experience.role,
-            style: context.textStyle.bodyLgBold
-                .copyWith(color: context.colorScheme.primary),
-          ),
-          const SizedBox(height: 8),
-          Expanded(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: experience.descriptions.isNotEmpty
-                  ? experience.descriptions
-                  .map((desc) =>
-                  _ExperienceDescriptionItem(description: desc))
-                  .toList()
-                  : [
-                Text(
-                  "Pas de description disponible",
-                  style: context.textStyle.bodyLgMedium.copyWith(
-                      color: context.colorScheme.onSurface,
-                      fontWeight: FontWeight.w400),
-                )
-              ],
+    return Center(
+      child: StyledCard(
+        width: expWidth,
+        height: expHeight,
+        borderEffect: true,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              experience.role,
+              style: context.textStyle.bodyLgBold
+                  .copyWith(color: context.colorScheme.primary),
             ),
-          ),
-        ],
+            const SizedBox(height: 8),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: experience.descriptions.isNotEmpty
+                    ? experience.descriptions
+                    .map((desc) =>
+                    _ExperienceDescriptionItem(description: desc))
+                    .toList()
+                    : [
+                  Text(
+                    "Pas de description disponible",
+                    style: context.textStyle.bodyLgMedium.copyWith(
+                        color: context.colorScheme.onSurface,
+                        fontWeight: FontWeight.w400),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
