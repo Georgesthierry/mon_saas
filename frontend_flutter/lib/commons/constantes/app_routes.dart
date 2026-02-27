@@ -3,6 +3,7 @@ import 'package:yenlei_flutter/src/about/about_page.dart';
 import 'package:yenlei_flutter/src/contact/contacte_me.dart';
 import 'package:yenlei_flutter/src/home/home_screen.dart';
 import 'package:yenlei_flutter/src/project/project_page.dart';
+import 'package:yenlei_flutter/src/service/service_page.dart';
 
 class Routes{
 
@@ -29,10 +30,7 @@ class AppRoute{
             child: ProjectPage())),
     GoRoute(path: Routes.services,
         pageBuilder: (context,state)=> NoTransitionPage(
-            child: HomeScreen())),
-    GoRoute(path: Routes.services,
-        pageBuilder: (context,state)=> NoTransitionPage(
-            child: HomeScreen())),
+            child: ServicePage())),
     GoRoute(path: Routes.contact,
         pageBuilder: (context,state)=> NoTransitionPage(
             child: ContactMe())),

@@ -12,7 +12,9 @@ class LargeHeroButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        PrimaryButton(title: context.texts.services),
+        PrimaryButton(
+
+            title: context.texts.services),
         SizedBox(width: Insets.lg,),
         OutlineButton(title: context.texts.cooperationRequest)
       ],

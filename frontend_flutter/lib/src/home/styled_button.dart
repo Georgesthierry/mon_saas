@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:yenlei_flutter/commons/constantes/app_routes.dart';
 import 'package:yenlei_flutter/commons/constantes/extensions.dart';
 import 'package:yenlei_flutter/commons/style/kolors.dart';
 import 'package:yenlei_flutter/commons/widgets/seotext.dart';
@@ -12,7 +14,9 @@ class PrimaryButton extends StatelessWidget {
     return SizedBox(
       width: 102,
       child: ElevatedButton(
-          onPressed: (){}, child: Text(
+          onPressed: (){
+            context.go(Routes.services);
+          }, child: Text(
         title,
         style: TextStyle(
             fontWeight: FontWeight.w500,color: AppColors.gray[100]),)),
