@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Profile, Project, Experience, Testimony
+from .models import Profile, Project, Experience, Testimony,Contact,Service
 
 
 class ProfileSerializer(serializers.ModelSerializer):
