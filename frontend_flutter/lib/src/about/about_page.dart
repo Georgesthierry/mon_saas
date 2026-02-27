@@ -29,7 +29,7 @@ class AboutPage extends ConsumerWidget {
                   CircleAvatar(
                     radius: 100,
                     backgroundImage: NetworkImage(
-                        "${ApiConstants.baseUrl}${profile.photo}"),
+                        profile.photo),
                   ),
                   const SizedBox(height: 16),
                   SEOText(

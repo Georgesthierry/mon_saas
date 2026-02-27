@@ -26,3 +26,12 @@ class ExperienceViewSet(viewsets.ModelViewSet):
 class TestimonyViewSet(viewsets.ModelViewSet):
     queryset = Testimony.objects.all()
     serializer_class = TestimonySerializer
+
+class ServiceViewSet(viewsets.ModelViewSet):
+    queryset = Service.objects.all()
+    serializer_class = ServiceSerializer
+
+
+class ContactViewSet(viewsets.ModelViewSet):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
