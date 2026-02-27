@@ -1,10 +1,12 @@
 from rest_framework import viewsets
-from .models import Profile, Project, Experience, Testimony
+from .models import Profile, Project, Experience, Testimony,Contact,Service
 from .serializers import (
     ProfileSerializer,
     ProjectSerializer,
     ExperienceSerializer,
-    TestimonySerializer
+    TestimonySerializer,
+    ServiceSerializer,
+    ContactSerializer
 )
 
 
