@@ -37,3 +37,34 @@ class ServiceViewSet(viewsets.ModelViewSet):
 class ContactViewSet(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
+    http_method_names = ['post']  # 🔐 sécurité : autorise seulement POST
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+
+        if serializer.is_valid():
+            contact = serializer.save()  # Sauvegarde en base
+
+            # 📧 Envoi email
+            send_mail(
+                subject=f"Nouveau message: {contact.subject}",
+                message=f"""
+                Nouveau message reçu :
+
+                Nom: {contact.name}
+                Email: {contact.email}
+
+                Message:
+                {contact.message}
+                """,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=["tonemail@gmail.com"],
+                fail_silently=False,
+            )
+
+            return Response(
+                {"message": "Message envoyé avec succès"},
+                status=status.HTTP_201_CREATED
+            )
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

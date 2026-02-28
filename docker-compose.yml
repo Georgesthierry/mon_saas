@@ -35,7 +35,7 @@ services:
     networks:
       - backend
       - frontend
-
+      
   flutter:
     build: 
       context: ./frontend_flutter

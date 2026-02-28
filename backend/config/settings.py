@@ -99,8 +99,23 @@ DATABASES = {
     }
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'thierrygeorgeskouassi@gmail.com'
+EMAIL_HOST_PASSWORD = 'fjan vrfy sguq npwh'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '5/minute',
+    }
+}
 
 
 # Password validation

@@ -135,8 +135,7 @@ class _ServiceCardContent extends StatelessWidget {
           service.icon,
           height: 48,
           width: 48,
-          errorBuilder: (_, __, ___) =>
-          const Icon(Icons.image_not_supported),
+          errorBuilder: (_, __, ___) =>Icon(Icons.auto_awesome,color:Theme.of(context).colorScheme.primary),
         ),
 
         const SizedBox(height: 20),
@@ -148,9 +147,7 @@ class _ServiceCardContent extends StatelessWidget {
               .titleLarge
               ?.copyWith(fontWeight: FontWeight.bold),
         ),
-
         const SizedBox(height: 12),
-
         Expanded(
           child: Text(
             service.description,

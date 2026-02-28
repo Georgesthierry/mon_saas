@@ -6,4 +6,5 @@ class ApiConstants {
   static const String experiences = "/experiences/";
   static const String testimonies = "/testimonies/";
   static const String services = "/services/";
+  static const String contact = "/contact/";
 }
