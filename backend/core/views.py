@@ -58,7 +58,7 @@ class ContactViewSet(viewsets.ModelViewSet):
                 {contact.message}
                 """,
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=["tonemail@gmail.com"],
+                recipient_list=["thierrygeorgeskouassi@gmail.com"],
                 fail_silently=False,
             )
 
