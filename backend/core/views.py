@@ -1,4 +1,6 @@
 from rest_framework import viewsets
+from django.core.mail import send_mail
+from django.conf import settings
 from .models import Profile, Project, Experience, Testimony,Contact,Service
 from .serializers import (
     ProfileSerializer,
@@ -37,30 +39,27 @@ class ServiceViewSet(viewsets.ModelViewSet):
 class ContactViewSet(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
-    http_method_names = ['post']  # 🔐 sécurité : autorise seulement POST
+    http_method_names = ['post']  # autorise seulement POST
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
 
         if serializer.is_valid():
-            contact = serializer.save()  # Sauvegarde en base
+            contact = serializer.save()  # sauvegarde en base
 
-            # 📧 Envoi email
-            send_mail(
-                subject=f"Nouveau message: {contact.subject}",
-                message=f"""
-                Nouveau message reçu :
-
-                Nom: {contact.name}
-                Email: {contact.email}
-
-                Message:
-                {contact.message}
-                """,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=["thierrygeorgeskouassi@gmail.com"],
-                fail_silently=False,
-            )
+            try:
+                send_mail(
+                    subject=f"Nouveau message: {contact.subject}",
+                    message=f"Nom: {contact.name}\nEmail: {contact.email}\nMessage:\n{contact.message}",
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=["tonemail@gmail.com"],
+                    fail_silently=False,
+                )
+            except Exception as e:
+                return Response(
+                    {"message": "Message reçu mais erreur d'envoi mail", "error": str(e)},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
 
             return Response(
                 {"message": "Message envoyé avec succès"},

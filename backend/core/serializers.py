@@ -43,3 +43,9 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = "__all__"
+
+    def validate(self, data):
+        for field in ['name', 'email', 'subject', 'message']:
+            if not data.get(field):
+                raise serializers.ValidationError({field: "Ce champ est requis"})
+        return data
