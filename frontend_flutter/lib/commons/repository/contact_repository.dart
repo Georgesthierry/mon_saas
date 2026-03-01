@@ -4,12 +4,6 @@ import 'package:yenlei_flutter/commons/constantes/api_constants.dart';
 import 'package:yenlei_flutter/src/models/contact_model.dart';
 
 
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:yenlei_flutter/commons/constantes/api_constants.dart';
-import 'package:yenlei_flutter/src/models/contact_model.dart';
-
-
 class ContactRepository {
   Future<void> sendContact(Contact contact) async {
     final url = Uri.parse("${ApiConstants.baseUrl}${ApiConstants.contact}");

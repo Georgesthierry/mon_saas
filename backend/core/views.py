@@ -40,14 +40,13 @@ class ServiceViewSet(viewsets.ModelViewSet):
 class ContactViewSet(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
-    http_method_names = ['post']  # autorise seulement POST
+    http_method_names = ['post']
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
 
         if serializer.is_valid():
-            contact = serializer.save()  # sauvegarde en base
-
+            contact = serializer.save()
             try:
                 send_mail(
                     subject=f"Nouveau message: {contact.subject}",
@@ -61,10 +60,10 @@ class ContactViewSet(viewsets.ModelViewSet):
                     {"message": "Message reçu mais erreur d'envoi mail", "error": str(e)},
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR
                 )
-
+            
             return Response(
                 {"message": "Message envoyé avec succès"},
                 status=status.HTTP_201_CREATED
             )
-
+        
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
