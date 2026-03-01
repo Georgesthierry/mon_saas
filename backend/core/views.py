@@ -1,6 +1,8 @@
 from rest_framework import viewsets
+from rest_framework import status, viewsets
+from rest_framework.response import Response
 from django.core.mail import send_mail
-from django.conf import settings
+from django.conf import setting
 from .models import Profile, Project, Experience, Testimony,Contact,Service
 from .serializers import (
     ProfileSerializer,
@@ -52,7 +54,7 @@ class ContactViewSet(viewsets.ModelViewSet):
                     subject=f"Nouveau message: {contact.subject}",
                     message=f"Nom: {contact.name}\nEmail: {contact.email}\nMessage:\n{contact.message}",
                     from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=["tonemail@gmail.com"],
+                    recipient_list=["thierrygeorgeskouassi@gmail.com"],
                     fail_silently=False,
                 )
             except Exception as e:
