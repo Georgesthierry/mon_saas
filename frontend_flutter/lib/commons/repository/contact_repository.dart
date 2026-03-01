@@ -14,6 +14,8 @@ class ContactRepository {
     );
 
     if (response.statusCode != 200 && response.statusCode != 201) {
+      print("Status: ${response.statusCode}");
+      print("Body: ${response.body}");
       throw Exception("Erreur envoi message: ${response.body}");
     }
   }
