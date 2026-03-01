@@ -1,9 +1,8 @@
-from rest_framework import viewsets
-from rest_framework import status, viewsets
+from rest_framework import viewsets, status
 from rest_framework.response import Response
 from django.core.mail import send_mail
-from django.conf import setting
-from .models import Profile, Project, Experience, Testimony,Contact,Service
+from django.conf import settings
+from .models import Profile, Project, Experience, Testimony, Contact, Service
 from .serializers import (
     ProfileSerializer,
     ProjectSerializer,
