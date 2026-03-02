@@ -7,10 +7,11 @@ import 'package:yenlei_flutter/commons/widgets/home_title_subtitle.dart';
 import 'package:yenlei_flutter/commons/widgets/styled_card.dart';
 import 'package:yenlei_flutter/src/models/experiences_model.dart';
 
-const expLen = 6;
-const exPointsSize = 16.0;
-const expScaleFactor = 150.0;
+const expLen = 7;
+const exPointsSize = 20.0;
+const expScaleFactor = 163.0;
 const expPointsFactor = expHeight /2 - exPointsSize /2 ;
+// const expPointsFactor = expScaleFactor / 2 - exPointsSize / 2;
 
 class ExperienceBody extends ConsumerWidget  {
   const ExperienceBody({super.key});
@@ -22,7 +23,7 @@ class ExperienceBody extends ConsumerWidget  {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         HomeTitleSubtitle(title: context.texts.experiences, subtitle: context.texts.experienceDescription),
-        SizedBox(height: 32,),
+        SizedBox(height: 16,),
         experiencesAsync.when(
           loading: () => const Center(child: CircularProgressIndicator()),
           error: (err, stack) => Center(child: Text("Erreur: $err")),
@@ -63,7 +64,7 @@ class DesktopExperienceBody extends StatelessWidget {
             for (int i = 0; i < expLen; i++) ...[
               if (i.isEven)
                 Positioned(
-                  top: i* 150,
+                  top: i * expScaleFactor,
                     right: 400,
                     left: 0,
                     child: Row(
@@ -77,12 +78,12 @@ class DesktopExperienceBody extends StatelessWidget {
                             dashColor: context.colorScheme.onBackground,
                           ),
                         ),
-      
+
                       ],
                     ))
               else
                 Positioned(
-                    top: i* 150,
+                    top: i * expScaleFactor,
                     left: 400,
                     right: 0,
                     child: Row(
@@ -96,11 +97,11 @@ class DesktopExperienceBody extends StatelessWidget {
                           ),
                         ),
                         ExperienceItem(experience: experiences[i]),
-      
+
                       ],
                     )),
               Positioned(
-                top: i * expScaleFactor + expPointsFactor,
+                top: i * expScaleFactor + expPointsFactor +6.5,
                   left: 0,
                   right: 0,
                   child: Container(
@@ -160,7 +161,7 @@ class PhoneExperienceBody extends StatelessWidget {
 
 
 const expWidth = 300.0;
-const expHeight = 230.0;
+const expHeight = 242.0;
 
 class ExperienceItem extends StatelessWidget {
   final Experience experience;
@@ -171,7 +172,6 @@ class ExperienceItem extends StatelessWidget {
     return Center(
       child: StyledCard(
         width: expWidth,
-        height: expHeight,
         borderEffect: true,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -181,23 +181,29 @@ class ExperienceItem extends StatelessWidget {
               style: context.textStyle.bodyLgBold
                   .copyWith(color: context.colorScheme.primary),
             ),
-            const SizedBox(height: 8),
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: experience.descriptions.isNotEmpty
-                    ? experience.descriptions
-                    .map((desc) =>
-                    _ExperienceDescriptionItem(description: desc))
-                    .toList()
-                    : [
-                  Text(
-                    "Pas de description disponible",
-                    style: context.textStyle.bodyLgMedium.copyWith(
+            const SizedBox(height: 10),
+            // Scrollable vertical avec contrainte maxHeight
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: 180, // taille max du scroll
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: experience.descriptions.isNotEmpty
+                      ? experience.descriptions
+                      .map((desc) => _ExperienceDescriptionItem(description: desc))
+                      .toList()
+                      : [
+                    Text(
+                      "Pas de description disponible",
+                      style: context.textStyle.bodyLgMedium.copyWith(
                         color: context.colorScheme.onSurface,
-                        fontWeight: FontWeight.w400),
-                  )
-                ],
+                        fontWeight: FontWeight.w400,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ],
