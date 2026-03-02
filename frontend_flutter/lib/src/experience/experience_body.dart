@@ -11,7 +11,6 @@ const expLen = 7;
 const exPointsSize = 20.0;
 const expScaleFactor = 163.0;
 const expPointsFactor = expHeight /2 - exPointsSize /2 ;
-// const expPointsFactor = expScaleFactor / 2 - exPointsSize / 2;
 
 class ExperienceBody extends ConsumerWidget  {
   const ExperienceBody({super.key});
@@ -23,7 +22,7 @@ class ExperienceBody extends ConsumerWidget  {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         HomeTitleSubtitle(title: context.texts.experiences, subtitle: context.texts.experienceDescription),
-        SizedBox(height: 16,),
+        SizedBox(height: 30,),
         experiencesAsync.when(
           loading: () => const Center(child: CircularProgressIndicator()),
           error: (err, stack) => Center(child: Text("Erreur: $err")),
