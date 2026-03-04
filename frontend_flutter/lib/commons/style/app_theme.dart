@@ -14,6 +14,7 @@ class AppTheme {
         primary: AppColors.primaryColor,
         background: AppColors.darkBackgroundColor,
         surface: AppColors.gray[800]!,
+        onSurface: Colors.white
       ),
       scaffoldBackgroundColor: AppColors.darkBackgroundColor,
       appBarTheme: AppBarTheme(

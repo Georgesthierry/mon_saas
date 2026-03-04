@@ -34,9 +34,9 @@ class _StyledCardState extends State<StyledCard> {
           padding: widget.padding ?? EdgeInsets.all(context.insets.cardPadding),
           decoration: BoxDecoration(
               border: Border.all(
-                  color: context.colorScheme.surface
+                  color: context.colorScheme.background
               ),
-              color: context.colorScheme.onSecondary,
+              color: context.colorScheme.surface,
               borderRadius: widget.borderRadius ?? BorderRadius.all(Radius.circular(24),)
           ),
           child: widget.child,

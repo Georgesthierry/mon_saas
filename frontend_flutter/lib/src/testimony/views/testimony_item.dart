@@ -25,7 +25,7 @@ class TestimonyItem extends StatelessWidget {
                 child: Text(
                   testimony.name,
                   style: context.textStyle.bodyLgBold
-                      .copyWith(color: context.colorScheme.onBackground),
+                      .copyWith(color: context.colorScheme.onSurface),
                 ),
               ),
             ],
@@ -34,7 +34,7 @@ class TestimonyItem extends StatelessWidget {
           Text(
             testimony.company,
             style: context.textStyle.bodyLgMedium
-                .copyWith(color: context.colorScheme.tertiary),
+                .copyWith(color: context.colorScheme.onBackground),
           ),
           const SizedBox(height: 8),
           Text(

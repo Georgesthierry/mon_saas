@@ -12,6 +12,7 @@ const exPointsSize = 20.0;
 const expScaleFactor = 163.0;
 const expPointsFactor = expHeight /2 - exPointsSize /2 ;
 
+
 class ExperienceBody extends ConsumerWidget  {
   const ExperienceBody({super.key});
 
@@ -22,7 +23,7 @@ class ExperienceBody extends ConsumerWidget  {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         HomeTitleSubtitle(title: context.texts.experiences, subtitle: context.texts.experienceDescription),
-        SizedBox(height: 30,),
+        SizedBox(height: 20,),
         experiencesAsync.when(
           loading: () => const Center(child: CircularProgressIndicator()),
           error: (err, stack) => Center(child: Text("Erreur: $err")),
@@ -178,7 +179,7 @@ class ExperienceItem extends StatelessWidget {
             Text(
               experience.role,
               style: context.textStyle.bodyLgBold
-                  .copyWith(color: context.colorScheme.primary),
+                  .copyWith(color: context.colorScheme.onSurface),
             ),
             const SizedBox(height: 10),
             // Scrollable vertical avec contrainte maxHeight
@@ -229,7 +230,7 @@ class _ExperienceDescriptionItem extends StatelessWidget {
             margin: const EdgeInsets.only(top: 6),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: context.colorScheme.surface,
+              color: context.colorScheme.onSurface,
             ),
           ),
           const SizedBox(width: 6),
@@ -237,7 +238,7 @@ class _ExperienceDescriptionItem extends StatelessWidget {
             child: Text(
               description,
               style: context.textStyle.bodyLgMedium.copyWith(
-                color: context.colorScheme.surface,
+                color: context.colorScheme.onSurface,
                 fontWeight: FontWeight.w400,
               ),
             ),
